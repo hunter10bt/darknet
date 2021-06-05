@@ -4,7 +4,7 @@ OPENCV=1
 OPENMP=0
 DEBUG=0
 
-ARCH=	-gencode arch=compute_37,code=sm_37 \
+ARCH=	-gencode arch=compute_37,code=[sm_37,compute_37] \
 	-gencode arch=compute_50,code=[sm_50,compute_50] \
 	-gencode arch=compute_50,code=[sm_52,compute_52] \
 	-gencode arch=compute_50,code=[sm_60,compute_60] \
@@ -28,7 +28,7 @@ ARFLAGS=rcs
 OPTS=-Ofast
 LDFLAGS= -lm -pthread 
 COMMON= -Iinclude/ -Isrc/
-CFLAGS=-Wall -Wno-unused-result -Wno-unknown-pragmas -Wfatal-errors -fPIC
+CFLAGS=-Wall -Wno-unused-result -Wno-unknown-pragmas -Wfatal-errors -fPIC -Wno-deprecated-gpu-targets 
 
 ifeq ($(OPENMP), 1) 
 CFLAGS+= -fopenmp
